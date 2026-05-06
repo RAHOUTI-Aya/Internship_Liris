@@ -6,14 +6,14 @@ historical French documents from the 18th century.
 
 The main challenges include:
 
-- Old orthography (e.g. "portoient", "appelloit")
-- Non-standard punctuation and spelling
-- Degraded scan quality
-- Historical vocabulary
+- ** Old orthography ** (e.g. "portoient", "appelloit")
+- ** Non-standard punctuation and spelling **
+- ** Degraded scan quality **
+- ** Historical vocabulary **
 
 We propose a pipeline combining:
 
-1. Mistral OCR for raw text extraction
-2. Cleaning and normalization
-3. LLM-based correction using Mistral Large
-4. Evaluation using CER and WER metrics
+** 1. ** Mistral OCR for raw text extraction
+** 2. ** Cleaning and normalization
+** 3. ** LLM-based correction using Mistral Large
+** 4. ** Evaluation using CER and WER metrics

@@ -14,9 +14,7 @@ Welcome to Textra Tender's documentation!
    :caption: Table of Contents
 
    Documentation/Scripts/1_Introduction.rst
-   Documentation/Scripts/2_Team.rst
-   Documentation/Scripts/3_DataAcquisition.rst
-   Documentation/Scripts/4_InformationExtraction.rst
-   Documentation/Scripts/5_ModularCategorization.rst
-   Documentation/Scripts/6_Scoring.rst
-   Documentation/Scripts/7_Platform.rst
+   Documentation/Scripts/2_Pipeline.rst
+   Documentation/Scripts/3_Metrics.rst
+   Documentation/Scripts/4_Results.rst
+   Documentation/Scripts/5_Api_reference.rst

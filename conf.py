@@ -7,8 +7,8 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'Textra'
-copyright = '2024, GIIA'
-author = 'GIIA'
+copyright = '2026, LIRIS, Lyon'
+author = 'Aya RAHOUTI'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
