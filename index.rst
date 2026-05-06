@@ -4,8 +4,10 @@ Welcome to the Mistral OCR Pipeline Documentation for Historical Documents (Dict
 .. figure:: /Documentation/Images/logo.png
    :width: 80%
    :align: center
-   :alt: Alternative text for the image
+   :alt: logo
    :name: logo
+
+
 
 .. toctree::
    :maxdepth: 2
