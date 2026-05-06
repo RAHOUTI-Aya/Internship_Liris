@@ -14,7 +14,7 @@ The main challenges include:
 We propose a pipeline combining:
 
 
-.. figure:: Documentation/Images/pipeline.png
+.. figure:: /Documentation/Images/pipeline.png
    :width: 80%
    :align: center
    :alt: Alternative text for the image

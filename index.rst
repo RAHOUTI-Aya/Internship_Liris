@@ -1,7 +1,7 @@
 Welcome to the Mistral OCR Pipeline Documentation for Historical Documents (Dictionnaire de Trévoux)!
 ===========================================================================================================
 
-.. figure:: _images/logo.png
+.. figure:: /Documentation/Images/logo.png
    :width: 80%
    :align: center
    :alt: Alternative text for the image
