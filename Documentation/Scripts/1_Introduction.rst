@@ -15,10 +15,12 @@ We propose a pipeline combining:
 
 
 .. figure:: /Documentation/Images/pipeline.png
-   :width: 80%
+   :width: 100%
    :align: center
    :alt: Alternative text for the image
    :name: pipeline
+
+
 
 **1. Mistral OCR for raw text extraction:**
    - Input: scanned historical document images.
