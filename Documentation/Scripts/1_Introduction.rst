@@ -11,6 +11,10 @@ The main challenges include:
 - **Degraded scan quality**.
 - **Historical vocabulary**.
 
+
+OCR Pipeline Description
+========================
+
 We propose a pipeline combining:
 
 
