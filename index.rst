@@ -1,4 +1,4 @@
-Welcome to Textra Tender's documentation!
+Welcome to the Mistral OCR Pipeline Documentation for Historical Documents (Dictionnaire de Trévoux)!
 ====================================
 
 .. figure:: Documentation/Images/logo.png
