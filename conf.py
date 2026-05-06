@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Textra'
+project = 'OCR & LLM-based solutions Pipeline for Historical Documents'
 copyright = '2026, LIRIS, Lyon'
 author = 'Aya RAHOUTI'
 
@@ -24,3 +24,6 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
+html_css_files = [
+    'custom.css',
+]

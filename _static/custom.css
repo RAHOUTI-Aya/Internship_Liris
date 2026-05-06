@@ -1,0 +1,58 @@
+/* =========================
+   MAIN HEADER (TOP BAR)
+========================= */
+.wy-nav-top {
+    background-color: #6b0f1a; /* grenat dark red */
+}
+
+/* =========================
+   SIDEBAR HEADER (SEARCH AREA)
+========================= */
+.wy-side-nav-search {
+    background-color: #6b0f1a; /* grenat */
+}
+
+/* =========================
+   SIDEBAR BACKGROUND
+========================= */
+.wy-nav-side {
+    background-color: #1a1a1a; /* keep dark grey (optional) */
+}
+
+/* =========================
+   LINKS (DEFAULT BLUE → GRENAT)
+========================= */
+a {
+    color: #8b1c2c;  /* red grenat */
+}
+
+a:hover {
+    color: #b22234;  /* brighter red on hover */
+}
+
+/* =========================
+   ACTIVE MENU ITEM
+========================= */
+.wy-menu-vertical li.current {
+    background-color: #6b0f1a;
+}
+
+/* =========================
+   BUTTONS / ACCENTS
+========================= */
+.btn, .btn-neutral {
+    background-color: #6b0f1a;
+    border-color: #6b0f1a;
+}
+
+.btn:hover {
+    background-color: #8b1c2c;
+    border-color: #8b1c2c;
+}
+
+/* =========================
+   CODE HIGHLIGHT (optional touch)
+========================= */
+.highlight {
+    border-left: 3px solid #6b0f1a;
+}
