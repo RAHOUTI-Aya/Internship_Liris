@@ -6,21 +6,21 @@ historical French documents from the 18th century.
 
 The main challenges include:
 
-- ** Old orthography ** (e.g. "portoient", "appelloit")
-- ** Non-standard punctuation and spelling **
-- ** Degraded scan quality **
-- ** Historical vocabulary **
+- **Old orthography** (e.g. "portoient", "appelloit")
+- **Non-standard punctuation and spelling**
+- **Degraded scan quality**
+- **Historical vocabulary**
 
 We propose a pipeline combining:
 
-.. figure:: Documentation/Images/pipeline.png
+.. figure:: C:\Users\LENOVO\Desktop\portfolio-aya-rahouti\Internship_Liris\Documentation\Images\pipeline.png
    :width: 80%
    :align: center
    :alt: Alternative text for the image
    :name: logo
 
    ..
-    
+
 
 **1. Mistral OCR for raw text extraction:**
    - Input: scanned historical document images
