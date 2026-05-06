@@ -3,9 +3,7 @@ import requests
 import re
 import unicodedata
 
-# ============================================================
-# CONFIG
-# ============================================================
+
 MISTRAL_API_KEY = "..."
 
 IMAGE_PATH = "page_1905.png"
