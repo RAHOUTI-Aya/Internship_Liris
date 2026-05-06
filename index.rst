@@ -1,11 +1,11 @@
 Welcome to the Mistral OCR Pipeline Documentation for Historical Documents (Dictionnaire de Trévoux)!
 ===========================================================================================================
 
-.. figure:: /Documentation/Images/logo.png
+.. figure:: /Documentation/Images/Dictio.png
    :width: 80%
    :align: center
-   :alt: logo
-   :name: logo
+   :alt: Dictio
+   :name: Dictio
 
 
 
