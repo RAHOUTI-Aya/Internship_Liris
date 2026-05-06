@@ -13,11 +13,11 @@ The main challenges include:
 
 We propose a pipeline combining:
 
-.. figure:: C:\Users\LENOVO\Desktop\portfolio-aya-rahouti\Internship_Liris\Documentation\Images\pipeline.png
+.. figure:: Documentation/Images/pipeline.png
    :width: 80%
    :align: center
    :alt: Alternative text for the image
-   :name: logo
+   :name: pipeline
 
    ..
 
