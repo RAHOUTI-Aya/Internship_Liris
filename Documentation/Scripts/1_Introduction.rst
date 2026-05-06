@@ -13,10 +13,11 @@ The main challenges include:
 
 We propose a pipeline combining:
 
-.. figure:: Documentation/Images/pipeline.png
-   :width: 100%
+
+.. figure:: _images/pipeline.png
+   :width: 80%
    :align: center
-   :alt: pipeline
+   :alt: Alternative text for the image
    :name: pipeline
 
 **1. Mistral OCR for raw text extraction:**
