@@ -1,6 +1,6 @@
 # Internship LIRIS — OCR Pipeline for Historical Documents
 
-OCR and LLM-based transcription pipeline for the *Dictionnaire de Trévoux* (1743), developed during an internship at **LIRIS, Lyon**.
+OCR and LLM-based transcription pipeline for the *Dictionnaire de Trévoux* (1743), developed during an internship at **LIRIS, Lyon** 2026.
 
 ---
 
@@ -32,7 +32,7 @@ Image (PNG)
 [2] Markdown Cleaning
     │
     ▼
-[3] LLM Post-Correction   (Mistral Large)
+[3] LLM Post-Correction   
     │
     ▼
 [4] Evaluation            (CER / WER vs gold standard)
@@ -48,7 +48,7 @@ Image (PNG)
 ├── Results/                # Evaluation output files
 ├── MistralOCR_Test.py      # Mistral OCR + Mistral Large pipeline
 ├── Qwen2_5vl_7b_Test.py    # Qwen2.5-VL local pipeline
-└── utils.py                # Shared functions (normalize, CER, WER)
+└── utils.py                # Shared functions 
 ```
 
 ---
@@ -65,7 +65,7 @@ ollama pull qwen2.5vl:7b
 
 ## Documentation
 
-Full documentation available on ReadTheDocs: [link]
+Full documentation available on ReadTheDocs: [https://internship-liris.readthedocs.io/en/latest/]
 
 ---
 
