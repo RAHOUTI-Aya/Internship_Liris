@@ -1,4 +1,4 @@
-Welcome to the Mistral OCR Pipeline Documentation for Historical Documents (Dictionnaire de Trévoux)!
+Welcome to the OCR & LLM-based solution Pipeline Documentation for Historical Documents (Dictionnaire de Trévoux)!
 ===========================================================================================================
 
 .. figure:: /Documentation/Images/Dictio.png
