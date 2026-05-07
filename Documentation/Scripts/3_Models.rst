@@ -128,25 +128,24 @@ Transcriptions pass through
 .. note::
    The post-correction step proved highly effective on Mistral OCR output (ΔWER up to +0.0422).
 
+
 Model Comparison Summary
 -------------------------
 
 .. list-table::
    :header-rows: 1
-   :widths: 20 15 15 15 15 20
+   :widths: 20 15 15 15 20
 
    * - Model
      - Type
      - Local / Cloud
      - API Key needed
      - Cost
-
    * - Mistral OCR
      - Dedicated OCR
      - Cloud
      - Yes (Mistral)
      - Paid
-
    * - Qwen2.5-VL 7B
      - Vision LLM
      - Local
