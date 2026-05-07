@@ -1,7 +1,7 @@
 API Reference
 =============
 
-This page documents all functions in the pipeline script ``mistral2.py``.
+This page documents all functions in the pipeline script ``MistralOCR.py``.
 
 run_mistral_ocr(image_path)
 ----------------------------
@@ -28,7 +28,7 @@ Sends a PNG image to the Mistral OCR API and returns the raw Markdown transcript
 
 .. code-block:: python
 
-   ocr_raw = run_mistral_ocr(r"C:\data\images\Pe.png")
+   ocr_raw = run_mistral_ocr("page_1905.png")
 
 ---
 
@@ -57,7 +57,7 @@ inline links, and inline code. All newlines are replaced with spaces.
 
 .. code-block:: python
 
-   clean = clean_markdown(ocr_raw)
+   ocr_clean = clean_markdown(ocr_raw)
 
 ---
 
@@ -68,16 +68,17 @@ run_mistral_correction(ocr_text)
 
    def run_mistral_correction(ocr_text: str) -> str
 
-Sends the cleaned OCR text to Mistral Large for post-correction.
-The model fixes OCR errors while preserving archaic 18th-century French orthography.
+Sends the cleaned OCR text to Mistral Large (``mistral-large-latest``, temperature 0)
+for post-correction. The model fixes OCR errors while preserving archaic
+18th-century French orthography.
 
 Corrections applied:
 
 - OCR character substitutions (``Vestigal`` → ``Vectigal``)
 - Semantic word substitutions (``entre deux foires`` → ``entre deux soleils``)
-- Erroneous modernisation (``portaient`` → ``portoient``)
-- Corrupted proper nouns (``Bouleons`` → ``Boileau``)
-- Wrong dates (``1587`` → ``1387``)
+- Erroneous modernisation of archaic spelling (``portaient`` → ``portoient``)
+- Corrupted proper nouns (``Bouleons`` → ``Boileau``, ``Genili`` → ``Generoso``)
+- Wrong dates (``1587`` → ``1387``, ``1688`` → ``1388``)
 - Words split across line breaks
 
 **Parameters**:
@@ -86,7 +87,7 @@ Corrections applied:
 
 **Returns**:
 
-- (*str*) — corrected plain text, single continuous line
+- (*str*) — corrected plain text, single continuous line, no newlines
 
 **Raises**:
 
@@ -100,56 +101,6 @@ Corrections applied:
 
 ---
 
-run_mistral_styling(corrected_text)
--------------------------------------
-
-.. code-block:: python
-
-   def run_mistral_styling(corrected_text: str) -> str
-
-Sends the corrected text to Mistral Large for typographic enrichment.
-The model adds XML-style tags reflecting the typographic conventions
-of the *Dictionnaire de Trévoux*.
-
-**Tags produced**:
-
-.. list-table::
-   :header-rows: 1
-   :widths: 20 80
-
-   * - Tag
-     - Meaning
-   * - ``<LC>...</LC>``
-     - Large caps — article headwords (vedettes)
-   * - ``<SC>...</SC>``
-     - Small caps — author names, cross-references
-   * - ``<IT>...</IT>``
-     - Italic — titles, citations, abbreviations, foreign words
-   * - ``<LA>...</LA>``
-     - Latin text (nested inside ``<IT>`` when appropriate)
-   * - ``<GR>...</GR>``
-     - Greek text
-   * - ``<HE>...</HE>``
-     - Hebrew text
-   * - ``<AU>...</AU>``
-     - Author name cited as reference
-
-**Parameters**:
-
-- ``corrected_text`` (*str*) — corrected plain text from ``run_mistral_correction()``
-
-**Returns**:
-
-- (*str*) — enriched text with style tags, single continuous line
-
-**Example**:
-
-.. code-block:: python
-
-   styled = run_mistral_styling(corrected)
-
----
-
 normalize(text)
 ----------------
 
@@ -157,14 +108,21 @@ normalize(text)
 
    def normalize(text: str) -> str
 
-Normalises a text string for evaluation. Strips style tags, lowercases,
-resolves Unicode variants, and removes punctuation.
+Normalises a text string before computing evaluation metrics.
+Applied identically to both the gold standard and the predictions
+to ensure fair comparison.
 
-Applied to both gold standard and predictions before computing CER and WER.
+Operations performed:
+
+- Unicode NFKD normalisation
+- Lowercase conversion
+- Long ``ſ`` → ``s``, ``œ`` → ``oe``, ``æ`` → ``ae``
+- Removal of punctuation (``.,;:!?()[]"'&``)
+- Collapsing of multiple spaces into one
 
 **Parameters**:
 
-- ``text`` (*str*) — raw or styled text string
+- ``text`` (*str*) — raw or corrected text string
 
 **Returns**:
 
@@ -175,7 +133,8 @@ Applied to both gold standard and predictions before computing CER and WER.
 .. code-block:: python
 
    gold_norm = normalize(gold_raw)
-   pred_norm = normalize(corrected)
+   ocr_norm  = normalize(ocr_clean)
+   corr_norm = normalize(corrected)
 
 ---
 
@@ -191,7 +150,7 @@ using Levenshtein edit distance at character level.
 
 .. math::
 
-   \text{CER} = \frac{\text{editdistance}(gold, pred)}{|gold|}
+   \text{CER} = \frac{\text{editdistance}_{char}(gold, pred)}{|gold|}
 
 **Parameters**:
 
@@ -206,8 +165,9 @@ using Levenshtein edit distance at character level.
 
 .. code-block:: python
 
-   score = cer(gold_norm, corr_norm)
-   print(f"CER : {score:.4f}")
+   cer_ocr  = cer(gold_norm, ocr_norm)
+   cer_corr = cer(gold_norm, corr_norm)
+   print(f"CER : {cer_corr:.4f}")
 
 ---
 
@@ -223,7 +183,7 @@ using Levenshtein edit distance at word (token) level.
 
 .. math::
 
-   \text{WER} = \frac{\text{editdistance}(gold.split(), pred.split())}{|gold.split()|}
+   \text{WER} = \frac{\text{editdistance}_{word}(gold.split(), pred.split())}{|gold.split()|}
 
 **Parameters**:
 
@@ -238,5 +198,48 @@ using Levenshtein edit distance at word (token) level.
 
 .. code-block:: python
 
-   score = wer(gold_norm, corr_norm)
-   print(f"WER : {score:.4f}")
+   wer_ocr  = wer(gold_norm, ocr_norm)
+   wer_corr = wer(gold_norm, corr_norm)
+   print(f"WER : {wer_corr:.4f}")
+
+---
+
+levenshtein_chars(a, b)
+------------------------
+
+.. code-block:: python
+
+   def levenshtein_chars(a: str, b: str) -> int
+
+Computes the Levenshtein edit distance between two strings at **character** level.
+Used internally by ``cer()``.
+
+**Parameters**:
+
+- ``a`` (*str*) — first string
+- ``b`` (*str*) — second string
+
+**Returns**:
+
+- (*int*) — minimum number of single-character edits (insertions, deletions, substitutions)
+
+---
+
+levenshtein_words(a, b)
+------------------------
+
+.. code-block:: python
+
+   def levenshtein_words(a: list, b: list) -> int
+
+Computes the Levenshtein edit distance between two **token lists**.
+Used internally by ``wer()``.
+
+**Parameters**:
+
+- ``a`` (*list*) — first token list (from ``str.split()``)
+- ``b`` (*list*) — second token list
+
+**Returns**:
+
+- (*int*) — minimum number of word-level edits (insertions, deletions, substitutions)

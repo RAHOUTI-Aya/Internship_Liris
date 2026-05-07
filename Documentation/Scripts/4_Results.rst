@@ -127,7 +127,7 @@ Inspection of the raw Qwen output reveals two causes:
   (e.g. ``"us de F Provence, paye quoral, po Les Enfantras"``)
 - Inclusion of page artefacts (``"Tome V. P E A."``, column separators)
 
-These errors are too severe for the Mistral Large correction prompt to fix reliably.
+These errors are too severe for the Large correction prompt to fix reliably.
 A dedicated pre-processing step to detect and remove hallucinated regions would be
 needed before correction can be effective.
 
@@ -151,20 +151,20 @@ more proper nouns (geographical names, biblical references), and mixed-language 
    * - Mistral OCR + LLM (Pe)
      - 0.0099
      - 0.0426
-     - ✅ Excellent
+     -  Excellent
    * - Mistral OCR + LLM (Syr)
      - 0.0229
      - 0.0609
-     - ✅ Good
+     -  Good
    * - Mistral OCR raw (Pe)
      - 0.0144
      - 0.0649
-     - ✅ Good
+     -  Good
    * - Mistral OCR raw (Syr)
      - 0.0339
      - 0.1031
-     - ⚠️ Acceptable
+     -  Acceptable
    * - Qwen2.5-VL (Pe)
      - 0.0740
      - 0.1460
-     - ⚠️ Acceptable
+     -  Acceptable

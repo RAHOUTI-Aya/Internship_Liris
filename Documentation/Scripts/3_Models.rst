@@ -116,7 +116,7 @@ Post-Correction: Mistral Large
 
 **Model ID**: ``mistral-large-latest``
 
-Regardless of the OCR model used in stage 1, all transcriptions pass through
+Transcriptions pass through
 **Mistral Large** for post-correction. This step fixes:
 
 - OCR character substitutions (``Vestigal`` → ``Vectigal``)
@@ -126,10 +126,7 @@ Regardless of the OCR model used in stage 1, all transcriptions pass through
 - Words split across line breaks
 
 .. note::
-   The post-correction step proved highly effective on Mistral OCR output (ΔWER up to +0.0422),
-   but had no measurable effect on Qwen2.5-VL output (ΔWER: 0.000).
-   This is likely due to Qwen producing hallucinated fragments that Mistral Large
-   cannot reliably identify as errors without additional context.
+   The post-correction step proved highly effective on Mistral OCR output (ΔWER up to +0.0422).
 
 Model Comparison Summary
 -------------------------
@@ -143,16 +140,13 @@ Model Comparison Summary
      - Local / Cloud
      - API Key needed
      - Cost
-     - Prompt needed
    * - Mistral OCR
      - Dedicated OCR
      - Cloud
      - Yes (Mistral)
      - Paid
-     - No
    * - Qwen2.5-VL 7b
      - Vision LLM
      - Local
      - No
      - Free
-     - Yes
