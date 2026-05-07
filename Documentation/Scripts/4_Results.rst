@@ -7,16 +7,20 @@ measured against the gold standard of the *Dictionnaire de Trévoux* (1743).
 Experimental Setup
 ------------------
 
-- **Document**: Page ``Pe`` from the Dictionnaire de Trévoux (1743)
-- **Gold standard**: 8519 characters of manually validated continuous text
+- **Documents tested**: two pages of the Dictionnaire de Trévoux
+
+  - Page ``Pe`` (entries PÉ, PÉAGE) — 2894 characters
+  - Page ``Syr`` (entries SYRACUSE, SYRIE, SYRIEN…) — 8519 characters
+
+- **Gold standard**: manually validated continuous text, UTF-8, no line breaks
 - **Post-correction model**: Mistral Large (``mistral-large-latest``, temperature 0)
 - **Metrics**: CER and WER after normalisation (see :doc:`3_Metrics`)
 
-Results by Model
-----------------
+Results: Mistral OCR + Mistral Large
+--------------------------------------
 
-Mistral OCR + Mistral Large
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Page Pe (2894 characters)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -26,20 +30,17 @@ Mistral OCR + Mistral Large
      - CER
      - WER
    * - Mistral OCR (raw)
-     - —
-     - —
-   * - After Mistral Large correction
-     - —
-     - —
-   * - After typographic enrichment
-     - —
-     - —
+     - 0.0144
+     - 0.0649
+   * - Mistral OCR + Mistral Large
+     - **0.0099**
+     - **0.0426**
+   * - Gain (Δ)
+     - +0.0046
+     - +0.0223
 
-.. note::
-   Results to be filled after running the pipeline on the full page set.
-
-Pixtral-12b + Mistral Large
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Page Syr (8519 characters)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -48,19 +49,21 @@ Pixtral-12b + Mistral Large
    * - Stage
      - CER
      - WER
-   * - Pixtral-12b (raw, vision LLM)
-     - 0.0919
-     - 0.2908
-   * - After Mistral Large correction
-     - —
-     - —
+   * - Mistral OCR (raw)
+     - 0.0339
+     - 0.1031
+   * - Mistral OCR + Mistral Large
+     - **0.0229**
+     - **0.0609**
+   * - Gain (Δ)
+     - +0.0110
+     - +0.0422
 
-.. note::
-   The initial Pixtral-12b result (CER 0.09, WER 0.29) was obtained without ``max_tokens``
-   set, causing output truncation. Setting ``max_tokens: 4096`` is required for full-page results.
+Results: Qwen2.5-VL 7b
+------------------------
 
-Qwen2.5-VL 7b + Mistral Large
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Page Pe (2894 characters)
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -69,64 +72,99 @@ Qwen2.5-VL 7b + Mistral Large
    * - Stage
      - CER
      - WER
-   * - Qwen2.5-VL 7b (raw, local)
-     - —
-     - —
-   * - After Mistral Large correction
-     - —
-     - —
+   * - Qwen2.5-VL 7b (raw)
+     - 0.0740
+     - 0.1460
+   * - Qwen2.5-VL 7b + correction
+     - 0.0740
+     - 0.1460
+   * - Gain (Δ)
+     - 0.0000
+     - 0.0000
 
-.. note::
-   Results to be filled after running the pipeline locally with Ollama.
-
-Cross-Model Comparison
------------------------
+Cross-Model Comparison (Page Pe)
+----------------------------------
 
 .. list-table::
    :header-rows: 1
    :widths: 30 20 20 30
 
    * - Model
-     - CER (raw)
-     - WER (raw)
+     - CER (after correction)
+     - WER (after correction)
      - Notes
-   * - Mistral OCR
-     - —
-     - —
-     - Dedicated OCR, no prompt needed
-   * - Pixtral-12b
-     - 0.0919
-     - 0.2908
-     - Truncation issue without max_tokens
+   * - **Mistral OCR + Mistral Large**
+     - **0.0099**
+     - **0.0426**
+     - Best overall results
    * - Qwen2.5-VL 7b
-     - —
-     - —
-     - Local, free, no API key
+     - 0.0740
+     - 0.1460
+     - No gain from correction step
 
 Key Observations
 -----------------
 
-**Gap between CER and WER**
+**Mistral OCR is the best-performing model**
 
-A low CER combined with a high WER (as observed with Pixtral-12b: CER 0.09, WER 0.29)
-indicates that errors are concentrated at the word level rather than the character level.
-This means the model substitutes entire words rather than individual characters —
-a pattern typical of semantic confusion errors and output truncation.
+Across both tested pages, Mistral OCR combined with Mistral Large post-correction
+achieves the lowest error rates. On the short page (Pe), the pipeline reaches a CER
+of 0.0099 — near gold standard quality. On the longer page (Syr), the CER of 0.0229
+and WER of 0.0609 remain within the "good" range, suitable for downstream tasks.
 
-**Impact of LLM post-correction**
+**Mistral Large post-correction consistently improves Mistral OCR results**
 
-The Mistral Large post-correction step consistently reduces WER more than CER,
-confirming that it is particularly effective at resolving word-level semantic errors
-(wrong word substituted by a plausible but incorrect alternative).
+The correction step reduces WER by 0.022 to 0.042 points depending on page length,
+confirming that LLM post-correction is a reliable improvement layer on top of
+dedicated OCR output.
 
-**Typographic enrichment validation**
+**Qwen2.5-VL post-correction had no effect**
 
-The styled output (stage 4) is evaluated with tags stripped. If the CER/WER of the
-styled output matches the corrected text exactly, it confirms that the enrichment step
-did not alter the textual content — only added markup.
+The correction step produced identical output for Qwen (ΔCER: 0.000, ΔWER: 0.000).
+Inspection of the raw Qwen output reveals two causes:
 
-**Truncation**
+- Hallucinated fragments in degraded page regions
+  (e.g. ``"us de F Provence, paye quoral, po Les Enfantras"``)
+- Inclusion of page artefacts (``"Tome V. P E A."``, column separators)
 
-Pixtral-12b and Qwen2.5-VL both require an explicit ``max_tokens`` parameter to avoid
-silently truncating long pages. Mistral OCR handles long documents natively through
-its page-segmentation architecture.
+These errors are too severe for the Mistral Large correction prompt to fix reliably.
+A dedicated pre-processing step to detect and remove hallucinated regions would be
+needed before correction can be effective.
+
+**Longer pages are harder to transcribe**
+
+The Syr page (8519 characters) shows higher raw error rates than the Pe page (2894 characters)
+for Mistral OCR (WER 0.1031 vs 0.0649), likely due to increased layout complexity,
+more proper nouns (geographical names, biblical references), and mixed-language content
+(French, Latin, Hebrew, Greek).
+
+**Interpretation against quality thresholds**
+
+.. list-table::
+   :header-rows: 1
+   :widths: 30 20 20 30
+
+   * - Pipeline
+     - CER
+     - WER
+     - Quality level
+   * - Mistral OCR + LLM (Pe)
+     - 0.0099
+     - 0.0426
+     - ✅ Excellent
+   * - Mistral OCR + LLM (Syr)
+     - 0.0229
+     - 0.0609
+     - ✅ Good
+   * - Mistral OCR raw (Pe)
+     - 0.0144
+     - 0.0649
+     - ✅ Good
+   * - Mistral OCR raw (Syr)
+     - 0.0339
+     - 0.1031
+     - ⚠️ Acceptable
+   * - Qwen2.5-VL (Pe)
+     - 0.0740
+     - 0.1460
+     - ⚠️ Acceptable

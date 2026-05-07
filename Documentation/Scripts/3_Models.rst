@@ -1,7 +1,7 @@
 Models
 ======
 
-This project compares three OCR/vision models for the transcription stage,
+This project compares two OCR/vision models for the transcription stage,
 all followed by the same Mistral Large post-correction step.
 
 Mistral OCR
@@ -23,12 +23,13 @@ returns structured Markdown output with page-level segmentation.
 - Returns structured ``pages`` objects with per-page Markdown
 - Handles multi-column layouts better than general vision models
 - No prompt required: document is sent directly
+- Best CER/WER scores observed across all tested models
 
 **Limitations**:
 
-- May truncate long pages if output exceeds token limits
-- Returns Markdown markup (italics, bold, headers) that must be cleaned
+- Returns Markdown markup (italics, bold, headers) that must be cleaned before evaluation
 - Cloud API: requires internet access and a valid Mistral API key
+- Paid service
 
 **Input format**:
 
@@ -43,55 +44,6 @@ returns structured Markdown output with page-level segmentation.
    }
 
 **Output format**: JSON with a ``pages`` list, each page containing a ``markdown`` field.
-
----
-
-Pixtral-12b
------------
-
-**Type**: Vision-language model / multimodal LLM (cloud)
-
-**Endpoint**: ``https://api.mistral.ai/v1/chat/completions``
-
-**Model ID**: ``pixtral-12b-2409``
-
-Pixtral-12b is Mistral AI's 12-billion parameter multimodal model capable of processing
-images alongside text prompts. It is used here as a vision LLM: the image is sent in
-the chat payload and the model is prompted to transcribe its content.
-
-**Strengths**:
-
-- Flexible: transcription behaviour is fully controlled via the prompt
-- Can apply corrections and normalisation in a single pass
-- No separate cleaning step required if the prompt instructs plain text output
-
-**Limitations**:
-
-- Higher risk of hallucination than a dedicated OCR model
-- Prone to truncating output on long pages (no explicit ``max_tokens`` by default)
-- Slower and more expensive per page than Mistral OCR
-- Output quality is heavily prompt-dependent
-
-**Input format**:
-
-.. code-block:: python
-
-   {
-     "model": "pixtral-12b-2409",
-     "messages": [
-       {
-         "role": "user",
-         "content": [
-           {"type": "text", "text": "<prompt>"},
-           {"type": "image_url", "image_url": "data:image/png;base64,<base64>"}
-         ]
-       }
-     ],
-     "max_tokens": 4096,
-     "temperature": 0
-   }
-
-**Output format**: standard chat completion JSON, ``choices[0].message.content``.
 
 ---
 
@@ -112,15 +64,18 @@ after the initial model download.
 
 - Fully local: no data leaves the machine, no API cost
 - Strong multilingual capability including French and Latin
-- Competitive performance with larger cloud models on structured document tasks
 - Free and open-source (Apache 2.0 licence)
+- Correctly transcribes most running text
 
 **Limitations**:
 
 - Requires a machine with sufficient VRAM (minimum 8 GB recommended)
 - Slower inference than cloud APIs on CPU-only setups
-- Output quality depends on hardware; GPU strongly recommended
-- Must be pulled before first use: ``ollama pull qwen2.5vl:7b``
+- Post-correction step had no effect on this model (ΔCER: 0.000, ΔWER: 0.000),
+  suggesting the LLM correction prompt needs to be adapted for Qwen outputs
+- Produces hallucinated artefacts on degraded page regions
+  (e.g. ``"us de F Provence, paye quoral, po Les Enfantras"``)
+- Includes page headers and column markers in output (e.g. ``"Tome V. P E A."``)
 
 **Setup**:
 
@@ -164,13 +119,17 @@ Post-Correction: Mistral Large
 Regardless of the OCR model used in stage 1, all transcriptions pass through
 **Mistral Large** for post-correction. This step fixes:
 
-- OCR substitution errors (``Vestigal`` → ``Vectigal``)
+- OCR character substitutions (``Vestigal`` → ``Vectigal``)
 - Semantic errors (``entre deux foires`` → ``entre deux soleils``)
-- Erroneous modernisation of archaic spelling
+- Erroneous modernisation of archaic spelling (``portaient`` → ``portoient``)
 - Corrupted proper nouns and dates
 - Words split across line breaks
 
-The same Mistral Large model is also used for the optional typographic enrichment stage (stage 4).
+.. note::
+   The post-correction step proved highly effective on Mistral OCR output (ΔWER up to +0.0422),
+   but had no measurable effect on Qwen2.5-VL output (ΔWER: 0.000).
+   This is likely due to Qwen producing hallucinated fragments that Mistral Large
+   cannot reliably identify as errors without additional context.
 
 Model Comparison Summary
 -------------------------
@@ -191,12 +150,6 @@ Model Comparison Summary
      - Yes (Mistral)
      - Paid
      - No
-   * - Pixtral-12b
-     - Vision LLM
-     - Cloud
-     - Yes (Mistral)
-     - Paid
-     - Yes
    * - Qwen2.5-VL 7b
      - Vision LLM
      - Local
