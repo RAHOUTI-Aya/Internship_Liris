@@ -17,8 +17,7 @@ Experimental Setup
    :alt: Page Pe — Dictionnaire de Trévoux
    :name: page_13
 
-  - Page ``Syr`` (entries SYRACUSE, SYRIE, SYRIEN…) — 8519 characters
-
+- Page ``Syr`` (entries SYRACUSE, SYRIE, SYRIEN…) — 8519 characters
 
 .. figure:: ../Images/page_1905.png
    :width: 100%
