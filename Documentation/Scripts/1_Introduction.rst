@@ -13,7 +13,7 @@ The main challenges include:
 
 
 OCR Pipeline Description
-========================
+---------------------
 
 We propose a pipeline combining:
 
