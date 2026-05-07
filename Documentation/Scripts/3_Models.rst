@@ -140,12 +140,14 @@ Model Comparison Summary
      - Local / Cloud
      - API Key needed
      - Cost
+
    * - Mistral OCR
      - Dedicated OCR
      - Cloud
      - Yes (Mistral)
      - Paid
-   * - Qwen2.5-VL 7b
+
+   * - Qwen2.5-VL 7B
      - Vision LLM
      - Local
      - No

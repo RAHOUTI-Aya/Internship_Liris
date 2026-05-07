@@ -109,7 +109,7 @@ Key Observations
 
 Across both tested pages, Mistral OCR combined with Mistral Large post-correction
 achieves the lowest error rates. On the short page (Pe), the pipeline reaches a CER
-of 0.0099 — near gold standard quality. On the longer page (Syr), the CER of 0.0229
+of 0.0099 near gold standard quality. On the longer page (Syr), the CER of 0.0229
 and WER of 0.0609 remain within the "good" range, suitable for downstream tasks.
 
 **Mistral Large post-correction consistently improves Mistral OCR results**
