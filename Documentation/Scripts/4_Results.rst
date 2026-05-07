@@ -11,22 +11,20 @@ Experimental Setup
 
   - Page ``Pe`` (entries PÉ, PÉAGE) — 2894 characters
 
-  .. figure:: /Documentation/Images/page_13.png
+.. figure:: ../Images/page_13.png
    :width: 100%
    :align: center
-   :alt: Alternative text for the image
+   :alt: Page Pe — Dictionnaire de Trévoux
    :name: page_13
-
 
   - Page ``Syr`` (entries SYRACUSE, SYRIE, SYRIEN…) — 8519 characters
 
-  .. figure:: /Documentation/Images/page_1905.png
+
+.. figure:: ../Images/page_1905.png
    :width: 100%
    :align: center
-   :alt: Alternative text for the image
+   :alt: Page Syr — Dictionnaire de Trévoux
    :name: page_1905
-
-
 
 - **Gold standard**: manually validated continuous text, UTF-8, no line breaks
 - **Post-correction model**: Mistral Large (``mistral-large-latest``, temperature 0)
