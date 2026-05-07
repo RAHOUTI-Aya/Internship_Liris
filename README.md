@@ -7,8 +7,8 @@ OCR and LLM-based transcription pipeline for the *Dictionnaire de Trévoux* (174
 ## Overview
 
 This project compares OCR and vision-language models for transcribing 18th-century French dictionary pages, combined with a LLM post-correction step evaluated against manually validated gold standards.
-![Sample page from the Dictionnaire de Trévoux](Donnees/page_13.png)
-![Sample page from the Dictionnaire de Trévoux](Donnees/page_1905.png)
+![Sample page from the Dictionnaire de Trévoux](Documentation/Images/page_13.png)
+![Sample page from the Dictionnaire de Trévoux](Documentation/Images/page_1905.png)
 ---
 
 ## Models Tested
