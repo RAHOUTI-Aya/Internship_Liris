@@ -46,16 +46,16 @@ def run_mistral_ocr(image_path: str) -> str:
 
 def clean_markdown(text: str) -> str:
     print("Nettoyage du markdown")
-    text = re.sub(r"!\[.*?\]\(.*?\)", "", text)          # supprimer images
-    text = re.sub(r"#{1,6}\s*", "", text)                 # supprimer titres
-    text = re.sub(r"\*{1,2}(.*?)\*{1,2}", r"\1", text)   # supprimer gras/italique
-    text = re.sub(r"_{1,2}(.*?)_{1,2}", r"\1", text)     # supprimer soulignement
+    text = re.sub(r"!\[.*?\]\(.*?\)", "", text)          # pour supprimer images
+    text = re.sub(r"#{1,6}\s*", "", text)                 #  titres
+    text = re.sub(r"\*{1,2}(.*?)\*{1,2}", r"\1", text)   #  gras/italique
+    text = re.sub(r"_{1,2}(.*?)_{1,2}", r"\1", text)     #  soulignement
     text = re.sub(r"&amp;", "&", text)                    # décoder &amp;
     text = re.sub(r"&lt;", "<", text)
     text = re.sub(r"&gt;", ">", text)
-    text = re.sub(r"\[.*?\]\(.*?\)", "", text)            # supprimer liens
-    text = re.sub(r"`{1,3}.*?`{1,3}", "", text)          # supprimer code inline
-    text = re.sub(r"\n+", " ", text)                      # tout en une ligne
+    text = re.sub(r"\[.*?\]\(.*?\)", "", text)            #  liens
+    text = re.sub(r"`{1,3}.*?`{1,3}", "", text)          #  code inline
+    text = re.sub(r"\n+", " ", text)                      # pour mettre tout en une ligne
     text = re.sub(r"\s+", " ", text)
     text = text.strip()
     print(f"    → {len(text)} caractères après nettoyage")

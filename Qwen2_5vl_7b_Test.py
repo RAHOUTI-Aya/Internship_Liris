@@ -17,7 +17,7 @@ LLM_MODEL = "qwen2.5vl:7b"
 
 def run_qwen_ocr(image_path: str) -> str:
 
-    print("[1/4] Qwen OCR en cours...")
+    print("[Qwen OCR")
 
     response = chat(
         model=OCR_MODEL,
@@ -61,7 +61,7 @@ def clean_text(text: str) -> str:
 
 def run_qwen_correction(ocr_text: str) -> str:
 
-    print("[3/4] Correction LLM en cours...")
+    print("Correction LLM ")
 
     system_prompt = """
 You are an expert in 18th century French historical texts and OCR correction.
