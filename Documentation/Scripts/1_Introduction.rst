@@ -6,7 +6,7 @@ historical French documents from the 18th century (Dictionnaire de Trévoux Tomm
 
 The main challenges include:
 
-- **Old orthography** (e.g. "portoient", "appelloit").
+- **Old orthography** (e.g "portoient", "appelloit").
 - **Non-standard punctuation and spelling**.
 - **Degraded scan quality**.
 - **Historical vocabulary**.
