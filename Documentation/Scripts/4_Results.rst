@@ -228,6 +228,7 @@ tur τὸ ἀθέατον. Sie et Cyrillus Alex. in Exod. L. II. 296.
 
 
 Mistral OCR: 
+
 - CER : *0.1111*
 - WER : *0.6364*
 
