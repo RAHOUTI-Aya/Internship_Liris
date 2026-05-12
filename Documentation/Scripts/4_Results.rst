@@ -269,7 +269,14 @@ It is observed that it usually misses on accents, long s,s→r, ... But most imp
    :name: table_ref
 
 
-However, when tested on greek scripts, it performed relatively better than the rest of the previously tested models:
+However, when tested on greek scripts, it performed relatively better than the rest of the previously tested models, for instance:
+
+.. figure:: /Documentation/Images/Wecklein1894_0109_13.png
+   :width: 100%
+   :align: center
+   :alt: Alternative text for the image
+   :name: table_ref
+
 
 - CER : **0.0278**
 - WER : **0.1818**
