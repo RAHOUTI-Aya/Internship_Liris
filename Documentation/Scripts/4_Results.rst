@@ -276,5 +276,5 @@ However, when tested on greek scripts, it performed relatively better than the r
 - **GOLD STANDARD:**
 (d. i. λειμῶνι, λειμῶνα) ποίαι μήλων. 603 εὐνῶμαι f. εὐνόμᾳ (Triklinios
 - **OCR BRUT GLM-OCR:**
-(d. i. λειμῶνι, λειμῶνα) ποίαι μήλων. 603 εὐνῶμαι f. εὐνόμα (Triflinios)
+(d. i. λειμῶνι, λειμῶνα) ποίαι μήλων. 603 εὐνῶμαι f. εὐνόμα (Triflinios
 
