@@ -243,9 +243,9 @@ Data:
 
 
 
+Results: GLM-OCR (Ziphu AI)
+--------------------------------------
 
-GLM-OCR (Ziphu AI):
------------------
 
 When tested on page 1905, GLM-OCR (Ziphu AI) produced the following results:
 
