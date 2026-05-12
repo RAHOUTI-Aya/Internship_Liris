@@ -232,7 +232,7 @@ tur τὸ ἀθέατον. Sie et Cyrillus Alex. in Exod. L. II. 296.
 - CER : **0.1111**
 - WER : **0.6364**
 
-
+Data:
 
 - **GOLD STANDARD:**
 (d. i. λειμῶνι, λειμῶνα) ποίαι μήλων. 603 εὐνῶμαι f. εὐνόμᾳ (Triklinios
@@ -272,9 +272,9 @@ However, when tested on greek scripts, it performed relatively better than the r
 - CER : **0.0278**
 - WER : **0.1818**
 
+Data:
 
 - **GOLD STANDARD:**
 (d. i. λειμῶνι, λειμῶνα) ποίαι μήλων. 603 εὐνῶμαι f. εὐνόμᾳ (Triklinios
 - **OCR BRUT GLM-OCR:**
 (d. i. λειμῶνι, λειμῶνα) ποίαι μήλων. 603 εὐνῶμαι f. εὐνόμα (Triflinios
-
