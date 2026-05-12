@@ -209,14 +209,14 @@ Example lines from selected commentaries on Sophocles’ Ajax: a) Lobeck, b) Sch
 
 Mistral OCR:  
 
-- CER : *0.0182*
-- WER : *0.0833*
+- CER : **0.0182**
+- WER : **0.0833**
 
 
-- *GOLD STANDARD:*
+- **GOLD STANDARD:**
 tur τὸ ἀθέατον. Sic et Cyrillus Alex. in Exod. L. II. 296.
 
-- *OCR BRUT MISTRAL:*
+- **OCR BRUT MISTRAL:**
 tur τὸ ἀθέατον. Sie et Cyrillus Alex. in Exod. L. II. 296.
 
 
@@ -229,16 +229,38 @@ tur τὸ ἀθέατον. Sie et Cyrillus Alex. in Exod. L. II. 296.
 
 Mistral OCR: 
 
-- CER : *0.1111*
-- WER : *0.6364*
+- CER : **0.1111**
+- WER : **0.6364**
 
 
 
-- *GOLD STANDARD:*
+- **GOLD STANDARD:**
 (d. i. λειμῶνι, λειμῶνα) ποίαι μήλων. 603 εὐνῶμαι f. εὐνόμᾳ (Triklinios
 
-- *OCR BRUT MISTRAL:*
+- **OCR BRUT MISTRAL:**
 (b. i. λειμωνι, λειμωνα) ποίαι μήλων. 603 εὐνώμαι †. εὐνόμα (Σriflinios
 
 
+GLM-OCR (Ziphu AI):
+-----------------
 
+When tested on page 1905, GLM-OCR (Ziphu AI) produced the following results:
+
+- CER : **0.1056**
+- WER : **0.2639**
+
+It is observed that it usually misses on accents, long s,s→r, ... But most importantly when it applies a layout to follow to transcribe the text inside, it misses sometimes whole words, since the structure of our text isn't the same always.
+
+
+.. figure:: /Documentation/Images/Voyez_Yez.png
+   :width: 100%
+   :align: center
+   :alt: Alternative text for the image
+   :name: table_ref
+
+
+.. figure:: /Documentation/Images/Voyez_Yez_txt.png
+   :width: 100%
+   :align: center
+   :alt: Alternative text for the image
+   :name: table_ref
