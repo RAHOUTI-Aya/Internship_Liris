@@ -188,6 +188,16 @@ more proper nouns (geographical names, biblical references), and mixed-language 
 .. note::
    However, when it comes to evaluating the models on the other languages, especially Greek and Hebrew, the performance is relatively poor.
 
+.. figure:: /Documentation/Images/Greek-ex.png
+   :width: 100%
+   :align: center
+   :alt: Alternative text for the image
+   :name: table_ref
+
+Example lines from selected commentaries on Sophocles’ Ajax: a) Lobeck, b) Schneidewin, c) Campbell, d) Jebb and e) Wecklein, Matteo Romanello, Sven Najem-Meyer, and Bruce Robertson. 2021. Optical Character Recognition of 19th Century Classical Commentaries: the Current State of Affairs.
+
+
+- For instance:
 
 .. figure:: /Documentation/Images/bsb10234118_0091_4.png
    :width: 100%
@@ -198,14 +208,15 @@ more proper nouns (geographical names, biblical references), and mixed-language 
 
 
 Mistral OCR:  
-CER : *0.0182*
-WER : *0.0833*
+
+- CER : *0.0182*
+- WER : *0.0833*
 
 
-*GOLD STANDARD:*
+- *GOLD STANDARD:*
 tur τὸ ἀθέατον. Sic et Cyrillus Alex. in Exod. L. II. 296.
 
-*OCR BRUT MISTRAL:*
+- *OCR BRUT MISTRAL:*
 tur τὸ ἀθέατον. Sie et Cyrillus Alex. in Exod. L. II. 296.
 
 
@@ -217,15 +228,15 @@ tur τὸ ἀθέατον. Sie et Cyrillus Alex. in Exod. L. II. 296.
 
 
 Mistral OCR: 
-CER : *0.1111*
-WER : *0.6364*
+- CER : *0.1111*
+- WER : *0.6364*
 
 
 
-*GOLD STANDARD:*
+- *GOLD STANDARD:*
 (d. i. λειμῶνι, λειμῶνα) ποίαι μήλων. 603 εὐνῶμαι f. εὐνόμᾳ (Triklinios
 
-*OCR BRUT MISTRAL:*
+- *OCR BRUT MISTRAL:*
 (b. i. λειμωνι, λειμωνα) ποίαι μήλων. 603 εὐνώμαι †. εὐνόμα (Σriflinios
 
 
