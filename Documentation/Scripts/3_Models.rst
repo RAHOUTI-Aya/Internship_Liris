@@ -43,7 +43,7 @@ returns structured Markdown output with page-level segmentation.
      }
    }
 
-**Output format**: JSON with a ``pages`` list, each page containing a ``markdown`` field.
+**Output format**: JSON with a ``pages`` list, each page containing a ``markdown`` field. Or Raw text.
 
 ---
 
@@ -155,6 +155,8 @@ Model Comparison Summary
 Kraken+Ciaconna
 -----------
 
+Kraken+Ciaconna has shown remarkable performance on Latin and polytonic Greek scripts.
+
 .. figure:: /Documentation/Images/table_ref.png
    :width: 100%
    :align: center
@@ -162,3 +164,4 @@ Kraken+Ciaconna
    :name: table_ref
 
 Results of Matteo Romanello, Sven Najem-Meyer, and Bruce Robertson. 2021. Optical Character Recognition of 19th Century Classical Commentaries: the Current State of Affairs.
+
