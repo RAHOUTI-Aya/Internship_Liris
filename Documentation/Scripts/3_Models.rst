@@ -151,3 +151,14 @@ Model Comparison Summary
      - Local
      - No
      - Free
+
+Kraken+Ciaconna
+-----------
+
+.. figure:: /Documentation/Images/table_ref.png
+   :width: 100%
+   :align: center
+   :alt: Alternative text for the image
+   :name: table_ref
+
+Results of Matteo Romanello, Sven Najem-Meyer, and Bruce Robertson. 2021. Optical Character Recognition of 19th Century Classical Commentaries: the Current State of Affairs.
