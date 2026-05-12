@@ -227,7 +227,7 @@ tur τὸ ἀθέατον. Sie et Cyrillus Alex. in Exod. L. II. 296.
    :name: table_ref
 
 
-Mistral OCR: 
+**Mistral OCR:**
 
 - CER : **0.1111**
 - WER : **0.6364**
@@ -236,9 +236,10 @@ Mistral OCR:
 
 - **GOLD STANDARD:**
 (d. i. λειμῶνι, λειμῶνα) ποίαι μήλων. 603 εὐνῶμαι f. εὐνόμᾳ (Triklinios
-
 - **OCR BRUT MISTRAL:**
 (b. i. λειμωνι, λειμωνα) ποίαι μήλων. 603 εὐνώμαι †. εὐνόμα (Σriflinios
+
+
 
 
 GLM-OCR (Ziphu AI):
@@ -264,3 +265,16 @@ It is observed that it usually misses on accents, long s,s→r, ... But most imp
    :align: center
    :alt: Alternative text for the image
    :name: table_ref
+
+
+However, when tested on greek scripts, it performed relatively better than the rest of the previously tested models:
+
+- CER : **0.0278**
+- WER : **0.1818**
+
+
+- **GOLD STANDARD:**
+(d. i. λειμῶνι, λειμῶνα) ποίαι μήλων. 603 εὐνῶμαι f. εὐνόμᾳ (Triklinios
+- **OCR BRUT GLM-OCR:**
+(d. i. λειμῶνι, λειμῶνα) ποίαι μήλων. 603 εὐνῶμαι f. εὐνόμα (Triflinios)
+
