@@ -212,6 +212,7 @@ Mistral OCR:
 - CER : **0.0182**
 - WER : **0.0833**
 
+Data:
 
 - **GOLD STANDARD:**
 tur τὸ ἀθέατον. Sic et Cyrillus Alex. in Exod. L. II. 296.
@@ -236,6 +237,7 @@ Data:
 
 - **GOLD STANDARD:**
 (d. i. λειμῶνι, λειμῶνα) ποίαι μήλων. 603 εὐνῶμαι f. εὐνόμᾳ (Triklinios
+
 - **OCR BRUT MISTRAL:**
 (b. i. λειμωνι, λειμωνα) ποίαι μήλων. 603 εὐνώμαι †. εὐνόμα (Σriflinios
 
@@ -276,5 +278,6 @@ Data:
 
 - **GOLD STANDARD:**
 (d. i. λειμῶνι, λειμῶνα) ποίαι μήλων. 603 εὐνῶμαι f. εὐνόμᾳ (Triklinios
+
 - **OCR BRUT GLM-OCR:**
 (d. i. λειμῶνι, λειμῶνα) ποίαι μήλων. 603 εὐνῶμαι f. εὐνόμα (Triflinios
