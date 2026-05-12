@@ -18,11 +18,11 @@ OCR Pipeline Description
 We propose a pipeline combining:
 
 
-.. figure:: /Documentation/Images/pipeline.png
+.. figure:: /Documentation/Images/New_pipeline.png
    :width: 100%
    :align: center
    :alt: Alternative text for the image
-   :name: pipeline
+   :name: New_pipeline
 
 
 
