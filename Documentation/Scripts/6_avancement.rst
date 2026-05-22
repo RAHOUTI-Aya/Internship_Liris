@@ -1,26 +1,12 @@
-Pipeline OCR — Dictionnaire de Trévoux
+Pipeline OCR : Dictionnaire de Trévoux
 ========================================
 
 .. contents:: Table des matières
    :depth: 2
    :local:
 
-Présentation
-------------
 
-Ce projet est un pipeline d'évaluation OCR développé dans le cadre d'un stage de recherche.
-L'objectif est de comparer différents moteurs OCR sur les pages numérisées du
-**Dictionnaire de Trévoux** (1743), un dictionnaire encyclopédique français du XVIIIe siècle
-imprimé en deux colonnes, en caractères anciens incluant le long-s (ſ), des ligatures et
-une orthographe historique.
-
-Le pipeline permet de lancer un moteur OCR sur une image, de comparer la sortie à un
-gold standard, de corriger automatiquement les erreurs via un LLM, et d'évaluer les
-résultats avec les métriques CER et WER.
-
-----
-
-Architecture du projet
+Architecture 
 -----------------------
 
 .. code-block:: text
@@ -47,7 +33,7 @@ Moteurs OCR testés
 
 Quatre moteurs ont été intégrés et testés sur le corpus.
 
-Kraken + CATMuS-Print Large ★
+Kraken + CATMuS-Print Large
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Moteur recommandé pour ce corpus. Le modèle `CATMuS-Print Large
@@ -87,8 +73,7 @@ Performant sur le texte moderne, moins adapté au long-s et aux ligatures histor
 Problème identifié : lecture en colonnes
 -----------------------------------------
 
-Le Dictionnaire de Trévoux est imprimé sur **deux colonnes par page**. La plupart des
-moteurs OCR lisent les lignes horizontalement en traversant les deux colonnes, ce qui
+La plupart des moteurs OCR lisent les lignes horizontalement en traversant les deux colonnes, ce qui
 produit un texte entrelacé incohérent.
 
 Exemple de sortie Surya désalignée :
@@ -136,13 +121,12 @@ Le long-s (ſ) est fréquemment confondu avec le ``f`` ou le ``s`` selon le mote
 Correction LLM
 --------------
 
-Un module de correction post-OCR via LLM a été intégré. L'API Groq est utilisée
-(accès gratuit) avec le modèle **Llama 3.3 70B**.
+Un module de correction post-OCR via LLM . L'API Groq est utilisée avec le modèle **Llama 3.3 70B**.
 
 Stratégies de prompt disponibles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Diplomatique complet (recommandé)**
+**Diplomatique complet**
    Prompt few-shot avec exemples de corrections typiques du Trévoux.
    Règles explicites : long-s, accents manquants, orthographe d'époque conservée (``étoit``,
    ``avoit``, ``&``), pas de modernisation.
@@ -163,7 +147,7 @@ Modèles testés via Groq
    * - Modèle
      - Taille
      - Statut
-   * - ``llama-3.3-70b-versatile`` ★
+   * - ``llama-3.3-70b-versatile`` 
      - 70B
      - Actif
    * - ``llama-3.3-8b-versatile``
@@ -174,10 +158,10 @@ Modèles testés via Groq
      - Actif
    * - ``mixtral-8x7b-32768``
      - 8x7B
-     - **Décommissionné**
+     - **--**
    * - ``gemma2-9b-it``
      - 9B
-     - **Décommissionné**
+     - **--**
 
 ----
 
@@ -188,11 +172,11 @@ Deux métriques sont calculées par alignement de séquences (distance de Levens
 
 .. glossary::
 
-   CER (Character Error Rate)
+   CER 
       Taux d'erreur au niveau du caractère.
       ``CER = (substitutions + insertions + suppressions) / nombre de caractères de référence``
 
-   WER (Word Error Rate)
+   WER 
       Taux d'erreur au niveau du mot.
       ``WER = (substitutions + insertions + suppressions) / nombre de mots de référence``
 
@@ -211,7 +195,7 @@ Résultats sur la page de test (p1905)
      - ~8 %
    * - Surya (sans correction layout)
      - élevé
-     - > 80 %
+     - > 60 %
    * - Tesseract 5 (fra+lat)
      - élevé
      - élevé
@@ -221,74 +205,7 @@ Résultats sur la page de test (p1905)
    Le WER élevé de Surya est principalement causé par le problème de lecture en
    colonnes (texte entrelacé), et non par des erreurs de reconnaissance de caractères.
 
-----
 
-Interfaces web
---------------
-
-app.py — Interface principale (port 5000)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: bash
-
-   $env:PYTHONUTF8=1   # Windows PowerShell
-   python app.py
-   # -> http://localhost:5000
-
-Fonctionnalités :
-
-- Upload d'une image de page
-- Sélection du moteur OCR (Kraken+CATMuS, Tesseract, EasyOCR, Surya)
-- Saisie du gold standard
-- Lancement de l'OCR et affichage du texte brut
-- Correction automatique via LLM (Groq)
-- Affichage des métriques CER / WER
-- Diff coloré mot à mot (rouge = erreur, vert = correction)
-
-app1.py — CER / WER Calculator (port 5001)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: bash
-
-   python app1.py
-   # -> http://localhost:5001
-
-Interface légère autonome. Permet de coller directement un gold standard et un texte
-OCR pour calculer CER et WER sans passer par le pipeline complet.
-Utile pour évaluer des sorties externes (ex. : fichier JSON Surya converti en texte brut).
-
-----
-
-Installation
-------------
-
-.. code-block:: bash
-
-   cd ocr_pipelineV2
-   python -m venv .venv
-
-   # Windows
-   .venv\Scripts\Activate.ps1
-
-   pip install flask flask-cors pillow numpy tqdm groq
-   pip install pytesseract easyocr
-
-   # Kraken + modèle CATMuS
-   pip install kraken
-   kraken get 10.5281/zenodo.10592716
-
-Variables d'environnement
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. code-block:: bash
-
-   # Windows PowerShell — évite les erreurs d'encodage Unicode
-   $env:PYTHONUTF8=1
-
-   # Clé API Groq (correction LLM)
-   $env:GROQ_API_KEY="votre_cle"
-
-----
 
 Prochaines étapes
 -----------------
