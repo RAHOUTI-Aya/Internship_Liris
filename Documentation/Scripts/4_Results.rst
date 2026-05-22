@@ -278,6 +278,8 @@ However, when tested on greek scripts, it performed relatively better than the r
    :name: table_ref
 
 
+
+
 - CER : **0.0278**
 - WER : **0.1818**
 
@@ -288,3 +290,11 @@ Data:
 
 - **OCR BRUT GLM-OCR:**
 (d. i. λειμῶνι, λειμῶνα) ποίαι μήλων. 603 εὐνῶμαι f. εὐνόμα (Triflinios
+
+
+Ok de retour, je veux maintenant suivre un pipeline plus précis, je veux en premier un modele qui decoupe la page en zones de texte
+puis ca passe par l'ocr, puis par un modele de correction de texte, et enfin un modele de structuration du texte pour le rendre plus exploitable (extraction de titres, de paragraphes, de listes, etc...), autrement dit je veux une Sortie: json plus structuré (paragraphes de texte, grands cap, petits cap, grec, hebrew….)
+
+ainsi je veux aussi pour les comparaisons de textes bruts que les deux gold standard et le texte ocr et le texte ocr+correction soit l'un a coté de lautre et que les fautes commises soient mises en oeuvre (par ex en couleur diff les mots faux )
+
+je veux des solutions moins couteuse par ex mistral ca marche bien mais cest couteux il ya dautres solutions / pipeline moins couteux 

@@ -50,3 +50,4 @@ We propose a pipeline combining:
    - **CER**: character-level error measurement.
    - **WER**: word-level error measurement.
    - **Comparison**: OCR vs gold, corrected vs gold.
+
