@@ -18,3 +18,4 @@ Welcome to the OCR & LLM-based solution Pipeline Documentation for Historical Do
    Documentation/Scripts/3_Models.rst
    Documentation/Scripts/4_Results.rst
    Documentation/Scripts/5_Api_reference.rst
+   Documentation/Scripts/6_avancement.rst
