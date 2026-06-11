@@ -91,19 +91,21 @@ Autres remarques:
 ------------------------
 
 Différence résultats OCR entre les pages :
-Exemple 1:
+
+
+- Exemple 1:
 
 .. figure:: /Documentation/Images/Lile_wrong.png
    :width: 100%
    :align: center
    
 
-.. figure:: /Documentation/Images/lile_right.png
+.. figure:: /Documentation/Images/Lile_right.png
    :width: 100%
    :align: center
    
 
-Exemple 2:
+- Exemple 2:
 
 .. figure:: /Documentation/Images/lieues.png
    :width: 100%
@@ -116,7 +118,7 @@ Exemple 2:
   
 
 
-Exemple 3:
+- Exemple 3:
 
 .. figure:: /Documentation/Images/Pecher_wrong.png
    :width: 100%
