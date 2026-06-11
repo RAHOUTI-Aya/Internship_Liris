@@ -108,12 +108,12 @@ Différence résultats OCR entre les pages :
 - Exemple 2:
 
 
-.. figure:: /Documentation/Images/lieues1.png
+.. figure:: /Documentation/Images/Lieu1.png
    :width: 100%
    :align: center
 
 
-.. figure:: /Documentation/Images/lieues2.png
+.. figure:: /Documentation/Images/Lieu2.png
    :width: 100%
    :align: center
 
