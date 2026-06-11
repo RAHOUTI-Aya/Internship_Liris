@@ -1,4 +1,4 @@
-Remarques : cas problématiques
+Remarques : 
 ==============================
 
 Difficultés récurrentes relevées sur le corpus. Elles motivent le schéma
@@ -86,5 +86,35 @@ La première lettre de la vedette est coupée au **bord de la zone** (crop de
 colonne trop serré ou polygone de ligne démarrant trop à droite). Le mot-clé
 d'entrée devient erroné, ce qui est critique pour l'indexation.
 
-**Piste** : élargir légèrement les boîtes de zones côté gauche, ou vérifier les
-marges de découpe de DocLayout-YOLO sur les vedettes en début de colonne.
+
+Autres remarques: 
+------------------------
+
+.. list-table::
+   :widths: 50 50
+
+   * - .. image:: /Documentation/Images/L'ile_wrong.png
+          :width: 100%
+
+     - .. image:: /Documentation/Images/L'ile_right.png
+          :width: 100%
+
+
+.. list-table::
+   :widths: 50 50
+
+   * - .. image:: /Documentation/Images/Lieues.png
+          :width: 100%
+
+     - .. image:: /Documentation/Images/Lieues_right.png
+          :width: 100%
+
+
+.. list-table::
+   :widths: 50 50
+
+   * - .. image:: /Documentation/Images/Pecher_wrong.png
+          :width: 100%
+
+     - .. image:: /Documentation/Images/Pecher_right.png
+          :width: 100%
