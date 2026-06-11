@@ -107,6 +107,7 @@ Différence résultats OCR entre les pages :
 
 - Exemple 2:
 
+
 .. figure:: /Documentation/Images/lieues.png
    :width: 100%
    :align: center
@@ -115,7 +116,6 @@ Différence résultats OCR entre les pages :
 .. figure:: /Documentation/Images/Lieues_right.png
    :width: 100%
    :align: center
-  
 
 
 - Exemple 3:
@@ -128,5 +128,5 @@ Différence résultats OCR entre les pages :
 .. figure:: /Documentation/Images/Pecher_right.png
    :width: 100%
    :align: center
-   
+
 
