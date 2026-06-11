@@ -1,4 +1,4 @@
-Remarques : 
+Remarques 
 ==============================
 
 Difficultés récurrentes relevées sur le corpus. Elles motivent le schéma
@@ -90,31 +90,41 @@ d'entrée devient erroné, ce qui est critique pour l'indexation.
 Autres remarques: 
 ------------------------
 
-.. list-table::
-   :widths: 50 50
+Différence résultats OCR entre les pages :
+Exemple 1:
 
-   * - .. image:: /Documentation/Images/L'ile_wrong.png
-          :width: 100%
+.. figure:: /Documentation/Images/Lile_wrong.png
+   :width: 100%
+   :align: center
+   
 
-     - .. image:: /Documentation/Images/L'ile_right.png
-          :width: 100%
+.. figure:: /Documentation/Images/lile_right.png
+   :width: 100%
+   :align: center
+   
+
+Exemple 2:
+
+.. figure:: /Documentation/Images/lieues.png
+   :width: 100%
+   :align: center
 
 
-.. list-table::
-   :widths: 50 50
-
-   * - .. image:: /Documentation/Images/Lieues.png
-          :width: 100%
-
-     - .. image:: /Documentation/Images/Lieues_right.png
-          :width: 100%
+.. figure:: /Documentation/Images/Lieues_right.png
+   :width: 100%
+   :align: center
+  
 
 
-.. list-table::
-   :widths: 50 50
+Exemple 3:
 
-   * - .. image:: /Documentation/Images/Pecher_wrong.png
-          :width: 100%
+.. figure:: /Documentation/Images/Pecher_wrong.png
+   :width: 100%
+   :align: center
+   
 
-     - .. image:: /Documentation/Images/Pecher_right.png
-          :width: 100%
+.. figure:: /Documentation/Images/Pecher_right.png
+   :width: 100%
+   :align: center
+   
+
