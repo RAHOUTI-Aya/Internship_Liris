@@ -131,3 +131,23 @@ Différence résultats OCR entre les pages :
    :align: center
 
 
+Pipeline OCR-puis-layout
+---------------------------------------
+
+Le pipeline actuel segmente les lignes sur des crops de zones YOLO.
+Une architecture alternative consiste à inverser l'ordre :
+
+.. code-block:: text
+
+   Image → blla (pleine colonne) → Kraken ligne par ligne
+                                           ↓
+                          YOLO (coordonnées uniquement, sans crop)
+                                           ↓
+                    Tri des lignes par zone YOLO puis par Y
+                                           ↓
+                              Texte final ordonné
+
+Cette approche préserve la qualité de segmentation blla et corrige
+les problèmes d'ordre de lecture observés sur les pages à zones
+mal ordonnées.
+
