@@ -95,12 +95,12 @@ Différence résultats OCR entre les pages :
 
 - Exemple 1:
 
-.. figure:: /Documentation/Images/Lile_wrong.png
+.. figure:: /Documentation/Images/ile1.png
    :width: 100%
    :align: center
    
 
-.. figure:: /Documentation/Images/Lile_right.png
+.. figure:: /Documentation/Images/ile2.png
    :width: 100%
    :align: center
    
@@ -108,24 +108,24 @@ Différence résultats OCR entre les pages :
 - Exemple 2:
 
 
-.. figure:: /Documentation/Images/lieues.png
+.. figure:: /Documentation/Images/lieues1.png
    :width: 100%
    :align: center
 
 
-.. figure:: /Documentation/Images/Lieues_right.png
+.. figure:: /Documentation/Images/lieues2.png
    :width: 100%
    :align: center
 
 
 - Exemple 3:
 
-.. figure:: /Documentation/Images/Pecher_wrong.png
+.. figure:: /Documentation/Images/Pecher1.png
    :width: 100%
    :align: center
    
 
-.. figure:: /Documentation/Images/Pecher_right.png
+.. figure:: /Documentation/Images/Pecher2.png
    :width: 100%
    :align: center
 
